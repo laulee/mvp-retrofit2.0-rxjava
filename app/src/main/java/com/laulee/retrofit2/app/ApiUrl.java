@@ -9,5 +9,5 @@ public class ApiUrl {
     /**
      * 请求地址
      */
-    public static final String BASE_URL = "http://jucaitest.sfdai.com/api/";
+    public static final String BASE_URL = "http://www.baidu.com/api/";
 }
