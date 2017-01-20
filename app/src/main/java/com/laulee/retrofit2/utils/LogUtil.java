@@ -7,7 +7,7 @@ import com.orhanobut.logger.Logger;
 
 /**
  * logger 封装类
- * Created by sean on 15/10/8.
+ * Created by laulee on 15/10/8.
  */
 public class LogUtil {
 

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by sean on 16/3/17.
+ * Created by laulee on 16/3/17.
  */
 public class AppConfig {
 

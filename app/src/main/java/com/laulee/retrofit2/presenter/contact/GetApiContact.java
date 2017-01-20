@@ -1,7 +1,7 @@
 package com.laulee.retrofit2.presenter.contact;
 
-import com.laulee.retrofit2.base.BasePrestenerInterface;
 import com.laulee.retrofit2.base.BaseView;
+import com.laulee.retrofit2.base.IBasePrestener;
 import com.laulee.retrofit2.bean.params.GetApiParams;
 
 /**
@@ -14,7 +14,7 @@ public class GetApiContact {
         void setTextView( String apiUrl );
     }
 
-    public interface Prestener extends BasePrestenerInterface<View> {
+    public interface Prestener extends IBasePrestener<View> {
         void getApiMethod( GetApiParams getApiParams );
     }
 

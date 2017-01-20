@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by sean on 15/10/18.
+ * Created by laulee on 15/10/18.
  */
 public class TimeUtil {
     //24*60*60*1000 一天

@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 加密工具
- * Created by sean on 15/9/23.
+ * Created by laulee on 15/9/23.
  */
 public class EncodeUtil
 {

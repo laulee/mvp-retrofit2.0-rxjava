@@ -14,7 +14,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class BaseParams {
     private final String GET_METHOD = "get";
     private final String STRING = "java.lang.String";
