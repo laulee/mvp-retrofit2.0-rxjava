@@ -17,6 +17,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     private List<T> datas;
     private IOnItemClickListener<T> listener;
 
+    public BaseRecyclerAdapter( List<T> datas ) {
+        this.datas = datas;
+    }
+
     @Override
     public VH onCreateViewHolder( ViewGroup parent, int viewType ) {
         View view = LayoutInflater.from( parent.getContext( ) ).inflate( layoutResId( ), null );
@@ -89,6 +93,16 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
      */
     public void setIOnItemClickListener( IOnItemClickListener<T> listener ) {
         this.listener = listener;
+    }
+
+    public void addItem( T entity ) {
+        datas.add( entity );
+        this.notifyDataSetChanged( );
+    }
+
+    public void addList( List<T> list ) {
+        datas.addAll( list );
+        this.notifyDataSetChanged( );
     }
 
     /**

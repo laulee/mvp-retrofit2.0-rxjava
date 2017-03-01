@@ -1,6 +1,6 @@
 package com.laulee.retrofit2.http;
 
-import com.laulee.retrofit2.base.HttpResult;
+import com.laulee.retrofit2.bean.entity.GankResult;
 import com.laulee.retrofit2.http.subscriber.ProgressSubscriber;
 
 import rx.Observable;
@@ -32,18 +32,17 @@ public class ObservableHelper {
      * @param <T>
      * @return
      */
-    private static <T> Observable.Transformer<HttpResult<T>, T> transformer() {
-        return new Observable.Transformer<HttpResult<T>, T>( ) {
+    private static <T> Observable.Transformer<GankResult<T>, T> transformer() {
+        return new Observable.Transformer<GankResult<T>, T>( ) {
             @Override
-            public Observable<T> call( Observable<HttpResult<T>> httpResultObservable ) {
-                return httpResultObservable.flatMap( new Func1<HttpResult<T>, Observable<T>>( ) {
+            public Observable<T> call( Observable<GankResult<T>> httpResultObservable ) {
+                return httpResultObservable.flatMap( new Func1<GankResult<T>, Observable<T>>( ) {
                     @Override
-                    public Observable<T> call( HttpResult<T> tHttpResult ) {
-                        if( tHttpResult.getCode( ) == 200 ) {
-                            return createData( tHttpResult.getValue( ) );
+                    public Observable<T> call( GankResult<T> tHttpResult ) {
+                        if( !tHttpResult.isError( ) ) {
+                            return createData( tHttpResult.getResults( ) );
                         } else
-                            return Observable
-                                    .error( new ApiException( tHttpResult.getMessage( ) ) );
+                            return Observable.error( new ApiException( "错误" ) );
                     }
                 } ).subscribeOn( Schedulers.io( ) ).unsubscribeOn( Schedulers.io( ) )
                         .subscribeOn( Schedulers.io( ) )
@@ -80,7 +79,7 @@ public class ObservableHelper {
      * @param progressSubscriber
      */
     public void toSubscriber( Observable ob, final ProgressSubscriber progressSubscriber ) {
-        Observable.Transformer<HttpResult<Object>, Object> objectTransformer = transformer( );
+        Observable.Transformer<GankResult<Object>, Object> objectTransformer = transformer( );
         Observable observable = ob.compose( objectTransformer ).doOnSubscribe( new Action0( ) {
             @Override
             public void call() {
