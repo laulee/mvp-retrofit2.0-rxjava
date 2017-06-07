@@ -1,4 +1,4 @@
-package com.laulee.retrofit2.http.url;
+package com.laulee.retrofit2.http.constant;
 
 /**
  * Created by laulee on 17/6/7.

@@ -13,7 +13,7 @@ import com.laulee.baseframe.base.BaseRecyclerAdapter;
 import com.laulee.baseframe.base.RxBaseFragment;
 import com.laulee.retrofit2.R;
 import com.laulee.retrofit2.app.App;
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
+import com.laulee.retrofit2.bean.GankItemEntity;
 import com.laulee.retrofit2.presenter.AndroidFragmentPresenter;
 import com.laulee.retrofit2.presenter.contact.AndroidFragmentContact;
 import com.laulee.retrofit2.ui.gank.adapter.AndroidAdapter;

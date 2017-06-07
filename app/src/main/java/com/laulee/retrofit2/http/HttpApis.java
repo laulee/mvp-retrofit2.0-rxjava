@@ -1,7 +1,7 @@
 package com.laulee.retrofit2.http;
 
 import com.laulee.baseframe.http.RetrofitHelper;
-import com.laulee.retrofit2.http.url.APIUrl;
+import com.laulee.retrofit2.http.constant.APIUrl;
 import com.laulee.retrofit2.http.Apis.GankApis;
 
 import okhttp3.OkHttpClient;

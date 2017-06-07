@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.laulee.baseframe.base.BaseRecyclerAdapter;
 import com.laulee.retrofit2.R;
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
+import com.laulee.retrofit2.bean.GankItemEntity;
 
 import java.util.List;
 

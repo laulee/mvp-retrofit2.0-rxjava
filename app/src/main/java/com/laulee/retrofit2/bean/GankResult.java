@@ -1,4 +1,4 @@
-package com.laulee.retrofit2.bean.entity;
+package com.laulee.retrofit2.bean;
 
 import com.laulee.baseframe.bean.ResponseBean;
 

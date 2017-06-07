@@ -4,7 +4,7 @@ import com.laulee.baseframe.http.callback.ModelCallBack;
 import com.laulee.baseframe.mvp.model.IBaseModel;
 import com.laulee.baseframe.mvp.presenter.IBasePresenter;
 import com.laulee.baseframe.mvp.view.IBaseView;
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
+import com.laulee.retrofit2.bean.GankItemEntity;
 
 import java.util.List;
 

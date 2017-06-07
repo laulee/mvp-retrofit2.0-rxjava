@@ -3,8 +3,8 @@ package com.laulee.retrofit2.model;
 import com.laulee.baseframe.http.callback.ModelCallBack;
 import com.laulee.baseframe.rx.ObserveMapper;
 import com.laulee.baseframe.rx.RxSubscriber;
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
-import com.laulee.retrofit2.bean.entity.GankResult;
+import com.laulee.retrofit2.bean.GankItemEntity;
+import com.laulee.retrofit2.bean.GankResult;
 import com.laulee.retrofit2.http.HttpApis;
 import com.laulee.retrofit2.presenter.contact.AndroidFragmentContact;
 

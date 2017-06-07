@@ -1,7 +1,7 @@
 package com.laulee.retrofit2.http.Apis;
 
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
-import com.laulee.retrofit2.bean.entity.GankResult;
+import com.laulee.retrofit2.bean.GankItemEntity;
+import com.laulee.retrofit2.bean.GankResult;
 
 import java.util.List;
 

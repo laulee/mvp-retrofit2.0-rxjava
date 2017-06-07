@@ -1,4 +1,4 @@
-package com.laulee.retrofit2.bean.entity;
+package com.laulee.retrofit2.bean;
 
 /**
  * Created by laulee on 17/2/28.

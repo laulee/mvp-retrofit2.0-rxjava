@@ -1,7 +1,7 @@
 package com.laulee.retrofit2.presenter;
 
 import com.laulee.baseframe.mvp.presenter.RxPresenter;
-import com.laulee.retrofit2.bean.entity.GankItemEntity;
+import com.laulee.retrofit2.bean.GankItemEntity;
 import com.laulee.retrofit2.http.callback.CallBack;
 import com.laulee.retrofit2.model.AndroidFragmentModel;
 import com.laulee.retrofit2.presenter.contact.AndroidFragmentContact;
