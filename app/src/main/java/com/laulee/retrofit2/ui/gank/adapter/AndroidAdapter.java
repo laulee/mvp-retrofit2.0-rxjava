@@ -4,11 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.laulee.baseframe.base.BaseRecyclerAdapter;
 import com.laulee.retrofit2.R;
-import com.laulee.retrofit2.base.BaseRecyclerAdapter;
 import com.laulee.retrofit2.bean.entity.GankItemEntity;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by laulee on 17/2/28.
@@ -38,15 +41,16 @@ public class AndroidAdapter extends BaseRecyclerAdapter<GankItemEntity, AndroidA
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_tech_title)
         TextView title;
+        @BindView(R.id.tv_tech_author)
         TextView author;
+        @BindView(R.id.tv_tech_time)
         TextView time;
 
         public ViewHolder( View itemView ) {
             super( itemView );
-            title = (TextView) itemView.findViewById( R.id.tv_tech_title );
-            author = (TextView) itemView.findViewById( R.id.tv_tech_author );
-            time = (TextView) itemView.findViewById( R.id.tv_tech_time );
+            ButterKnife.bind( this, itemView );
         }
     }
 }

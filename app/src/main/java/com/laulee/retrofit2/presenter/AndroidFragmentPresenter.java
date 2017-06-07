@@ -1,56 +1,50 @@
 package com.laulee.retrofit2.presenter;
 
-import com.laulee.retrofit2.base.BasePrestener;
+import com.laulee.baseframe.mvp.presenter.RxPresenter;
 import com.laulee.retrofit2.bean.entity.GankItemEntity;
-import com.laulee.retrofit2.bean.entity.GankResult;
-import com.laulee.retrofit2.http.Apis.Apis;
-import com.laulee.retrofit2.http.Apis.GankApis;
-import com.laulee.retrofit2.http.ObservableHelper;
-import com.laulee.retrofit2.http.subscriber.ProgressSubscriber;
+import com.laulee.retrofit2.http.callback.CallBack;
+import com.laulee.retrofit2.model.AndroidFragmentModel;
 import com.laulee.retrofit2.presenter.contact.AndroidFragmentContact;
 
 import java.util.List;
 
-import rx.Observable;
+import rx.Subscription;
 
 /**
  * Created by laulee on 17/2/27.
  */
 
 public class AndroidFragmentPresenter
-        extends BasePrestener<AndroidFragmentContact.AndroidFragmentView> {
+        extends RxPresenter<AndroidFragmentContact.IView, AndroidFragmentModel>
+        implements AndroidFragmentContact.IPresenter {
 
-    public void getImageData() {
-        Observable<GankResult<List<GankItemEntity>>> observable = Apis.getInstance( ).getRetrofit( )
-                .create( GankApis.class ).getGankData( "Android", 20, 1 );
-        ObservableHelper.getInstance( )
-                .toSubscriber( observable, new ProgressSubscriber<List<GankItemEntity>>( ) {
-                    @Override
-                    protected void _onError( String message ) {
-                        mView.showError( message );
-                    }
-
-                    @Override
-                    protected void _onNext( List<GankItemEntity> gankItemEntities ) {
-                        mView.showContent( gankItemEntities );
-                    }
-                } );
+    public AndroidFragmentPresenter() {
+        mModel = new AndroidFragmentModel( );
     }
 
-    public void getGankData() {
-        Observable<GankResult<List<GankItemEntity>>> observable = Apis.getInstance( ).getRetrofit( )
-                .create( GankApis.class ).getRandomGirl( 10 );
-        ObservableHelper.getInstance( )
-                .toSubscriber( observable, new ProgressSubscriber<List<GankItemEntity>>( ) {
+    @Override
+    public void getAndroidImage( String tech, int num, int page ) {
+
+        Subscription subscription = mModel
+                .getAndroidImage( tech, num, page, new CallBack<List<GankItemEntity>>( ) {
                     @Override
-                    protected void _onError( String message ) {
-                        mView.showError( message );
+                    public void onSuccess( List<GankItemEntity> gankItemEntities ) {
+                        showContent( gankItemEntities );
                     }
 
                     @Override
-                    protected void _onNext( List<GankItemEntity> gankItemEntities ) {
-                        mView.showGirlImage(gankItemEntities.get( 0 ).getUrl());
+                    public void onError( String message ) {
+                        showError( message );
                     }
                 } );
+        addSubscrebe( subscription );
+    }
+
+    private void showError( String message ) {
+        mView.showError( message );
+    }
+
+    private void showContent( List<GankItemEntity> gankItemEntities ) {
+        mView.showContent( gankItemEntities );
     }
 }

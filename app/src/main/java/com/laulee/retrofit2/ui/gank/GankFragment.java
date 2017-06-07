@@ -5,12 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.laulee.baseframe.base.BaseFragment;
 import com.laulee.retrofit2.R;
-import com.laulee.retrofit2.base.BaseFragment;
-import com.laulee.retrofit2.base.BasePrestener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by laulee on 17/2/27.
@@ -18,18 +19,15 @@ import java.util.List;
 
 public class GankFragment extends BaseFragment {
 
+    @BindView(R.id.gank_fragment_layout_viewpager)
     ViewPager gankViewPager;
+    @BindView(R.id.gank_fragment_layout_tablayout)
     TabLayout tabLayout;
     FragmentAdapter fragmentPagerAdapter;
 
     @Override
     protected int setLayoutId() {
         return R.layout.gank_fragment_layout;
-    }
-
-    @Override
-    protected BasePrestener createPresenter() {
-        return null;
     }
 
     @Override

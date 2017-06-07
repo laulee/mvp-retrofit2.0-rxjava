@@ -10,48 +10,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.laulee.baseframe.base.BaseActivity;
 import com.laulee.retrofit2.R;
-import com.laulee.retrofit2.base.BaseActivity;
-import com.laulee.retrofit2.presenter.MainPresenter;
 import com.laulee.retrofit2.ui.gank.GankFragment;
+
+import butterknife.BindView;
 
 /**
  * Created by laulee on 17/2/26.
  */
 
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.main_layout_toolbar)
     Toolbar toolbar;
+    @BindView(R.id.main_layout_navigation)
     NavigationView navigationView;
+    @BindView(R.id.main_layout)
     DrawerLayout mainLayout;
+    @BindView(R.id.main_layout_frame)
     FrameLayout mainFrameLayout;
     private Fragment currentFragment;
-
-    @Override
-    protected void initView() {
-        toolbar = (Toolbar) findViewById( R.id.main_layout_toolbar );
-        setSupportActionBar( toolbar );
-        mainLayout = (DrawerLayout) findViewById( R.id.main_layout );
-        navigationView = (NavigationView) findViewById( R.id.main_layout_navigation );
-        mainFrameLayout = (FrameLayout) findViewById( R.id.main_layout_frame );
-
-        ActionBar actionBar = getSupportActionBar( );
-        if( actionBar != null ) {
-            actionBar.setDisplayHomeAsUpEnabled( true );
-            actionBar.setHomeAsUpIndicator( R.mipmap.ic_action_add );
-        }
-
-        navigationView.setCheckedItem( R.id.nav_call );
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener( ) {
-                    @Override
-                    public boolean onNavigationItemSelected( @NonNull MenuItem item ) {
-                        mainLayout.closeDrawers( );
-                        return true;
-                    }
-                } );
-
-        switchFragment( new GankFragment( ) );
-    }
 
     private void switchFragment( Fragment fragment ) {
         FragmentTransaction transaction = getSupportFragmentManager( ).beginTransaction( );
@@ -67,16 +46,27 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
     @Override
     protected void initParams() {
+        setSupportActionBar( toolbar );
+        ActionBar actionBar = getSupportActionBar( );
+        if( actionBar != null ) {
+            actionBar.setDisplayHomeAsUpEnabled( true );
+            actionBar.setHomeAsUpIndicator( R.mipmap.ic_action_add );
+        }
+        navigationView.setCheckedItem( R.id.nav_call );
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener( ) {
+                    @Override
+                    public boolean onNavigationItemSelected( @NonNull MenuItem item ) {
+                        mainLayout.closeDrawers( );
+                        return true;
+                    }
+                } );
 
+        switchFragment( new GankFragment( ) );
     }
 
     @Override
     protected int setContentViewId() {
         return R.layout.main_actvity;
-    }
-
-    @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter( );
     }
 }

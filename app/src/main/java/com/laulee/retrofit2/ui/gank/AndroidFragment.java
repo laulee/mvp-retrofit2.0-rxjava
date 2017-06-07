@@ -9,9 +9,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.laulee.baseframe.base.BaseRecyclerAdapter;
+import com.laulee.baseframe.base.RxBaseFragment;
 import com.laulee.retrofit2.R;
-import com.laulee.retrofit2.base.BaseFragment;
-import com.laulee.retrofit2.base.BaseRecyclerAdapter;
+import com.laulee.retrofit2.app.App;
 import com.laulee.retrofit2.bean.entity.GankItemEntity;
 import com.laulee.retrofit2.presenter.AndroidFragmentPresenter;
 import com.laulee.retrofit2.presenter.contact.AndroidFragmentContact;
@@ -25,8 +26,8 @@ import java.util.List;
  * Created by laulee on 17/2/27.
  */
 
-public class AndroidFragment extends BaseFragment<AndroidFragmentPresenter>
-        implements AndroidFragmentContact.AndroidFragmentView {
+public class AndroidFragment extends RxBaseFragment<AndroidFragmentPresenter>
+        implements AndroidFragmentContact.IView {
 
     SwipeRefreshLayout swipeRefreshLayout;
     ImageView ivBlur;
@@ -41,14 +42,8 @@ public class AndroidFragment extends BaseFragment<AndroidFragmentPresenter>
     }
 
     @Override
-    protected AndroidFragmentPresenter createPresenter() {
-        return new AndroidFragmentPresenter( );
-    }
-
-    @Override
     protected void initParams() {
-        mPresenter.getImageData( );
-        mPresenter.getGankData( );
+        mPresenter.getAndroidImage( "Android" ,20,1);
     }
 
     @Override
@@ -66,7 +61,7 @@ public class AndroidFragment extends BaseFragment<AndroidFragmentPresenter>
                     swipeRefreshLayout.setEnabled( true );
                 } else {
                     swipeRefreshLayout.setEnabled( false );
-                    float rate = (float) ( SystemUtil.dp2px( getContext( ),
+                    float rate = (float) ( SystemUtil.dp2px( App.getInstance( ),
                                                              256 ) + verticalOffset * 2 ) /
                             SystemUtil
                             .dp2px( getContext( ), 256 );
@@ -78,7 +73,7 @@ public class AndroidFragment extends BaseFragment<AndroidFragmentPresenter>
         swipeRefreshLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener( ) {
             @Override
             public void onRefresh() {
-                mPresenter.getImageData( );
+
             }
         } );
     }
